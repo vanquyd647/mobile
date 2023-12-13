@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+// App.js
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import todoReducer from './redux/todoRedux';
+import Todo2 from './todo2';
+import Todo from './todo';
+const store = createStore(todoReducer);
+// ... (your other imports)
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <Todo2 />
+    </Provider>
+    // <Todo/>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
+export default App;
